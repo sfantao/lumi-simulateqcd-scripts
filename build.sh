@@ -1,13 +1,16 @@
 #!/bin/bash -e
 
-module purge
-ml PrgEnv-cray/8.3.3 
-ml cpe/23.03
-ml craype-x86-trento craype-accel-amd-gfx90a
+if [[ "$(hostname)" = "uan"* ]] ; then 
+    module purge
+    ml PrgEnv-cray/8.3.3 
+    ml cpe/23.03
+    ml craype-x86-trento craype-accel-amd-gfx90a
 
-module use /pfs/lustrep2/projappl/project_462000125/samantao-public/mymodules
-module load rocm/5.4.3
+    module use /pfs/lustrep2/projappl/project_462000125/samantao-public/mymodules
+    module load rocm/5.4.3
+else
 
+fi
 wd=$(pwd)
 
 set -x
